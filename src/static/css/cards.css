@@ -48,6 +48,18 @@
   background: #23c186;
 }
 
+.x .container .card:nth-child(3n) .box .content button {
+    background: #2196f3;
+  }
+  
+  .x .container .card:nth-child(3n+1) .box .content button {
+    background: #e91e63;
+  }
+  
+  .x .container .card:nth-child(3n+2) .box .content button {
+    background: #23c186;
+  }
+
 .x .container .card .box {
   position: absolute;
   top: 20px;
