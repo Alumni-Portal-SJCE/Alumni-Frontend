@@ -1,11 +1,11 @@
-import React from 'react'
+import React,{lazy,Suspense} from 'react'
 import '../static/css/landing-page.min.css'
 import '../static/vendor/bootstrap/css/bootstrap.min.css'
 import '../static/vendor/simple-line-icons/css/simple-line-icons.css'
 import '../static/vendor/fontawesome-free/css/all.min.css'
 import JSSLogo from '../static/img/jss.png'
-import LazyLoad from 'react-lazyload';
-import AllAlumniDisplay from './AllAlumniDisplay'
+// import AllAlumniDisplay from './AllAlumniDisplay'
+const AllAlumniDisplay=lazy(()=>import('./AllAlumniDisplay'))
 function frontpage() {
 
   return (
@@ -77,10 +77,10 @@ function frontpage() {
   </section> */}
 
 
-  <LazyLoad height={200}>
+  <Suspense fallback={<div>Loading...</div> }>
     <AllAlumniDisplay/>
 
-  </LazyLoad>
+  </Suspense>
   
 
   <section class="showcase">

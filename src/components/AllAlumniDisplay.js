@@ -7,12 +7,19 @@ import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import Box from '@mui/material/Box';
-import { Button, DialogContent, TextField } from "@mui/material";
+import {  DialogContent, TextField } from "@mui/material";
 import {Typography} from "@mui/material";
+import { Form, Button } from 'react-bootstrap';
+import emailjs from '@emailjs/browser';
+import InfiniteScroll from 'react-infinite-scroll-component';
+import EachAlumni from './EachAlumni';
+import Pagination from './Pagination';
 
 function AllAlumniDisplay() {
-    const [alumni,setAlumni]=useState('');
+    const [alumni,setAlumni]=useState([]);
     const [loading, setLoader] = useState(true);
+    const[currentPage,setCurrentPage]=useState(1);
+    const[postsPerPage,setPostPerPage]=useState(9);
 
     useEffect(() => {
         fetch(url + "auth/get_all_alumni_details", {
@@ -24,13 +31,20 @@ function AllAlumniDisplay() {
           .then((response) => response.json())
           .then((data) => {
             setAlumni(data);
-            setLoader(false);
+            
 
+          }).then(()=>{
+            setLoader(false);
           });
       }, []);
+      const indexOfLastPost =currentPage*postsPerPage;
+      const indexOfFirstPost=indexOfLastPost-postsPerPage;
+      const currentPosts=alumni.slice(indexOfFirstPost,indexOfLastPost);
+      const paginate=(pageNumber)=>setCurrentPage(pageNumber);
       const [openeditStudentDetails, setopeneditStudentDetails] = useState(false);
       const [sendcontact,setContact]=useState('');
-    
+      const paginateFront = () => setCurrentPage(currentPage + 1);
+        const paginateBack = () => setCurrentPage(currentPage - 1);
       const handleCloseopeneditStudentDetails = () => {
         setopeneditStudentDetails(false);
       };
@@ -43,12 +57,21 @@ function AllAlumniDisplay() {
         email: "",
         message: ""
       });
-
+    
       
   const handleChange = (prop) => (event) => {
     setSendMail({ ...mail, [prop]: event.target.value });
   };
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
+  const [success, setSuccess] = useState('');
+  const [error, setError] = useState('');
+  useEffect(() => {
+        emailjs.init('zmxtLJK_mxc708L5m');
+    }, [])
 
+   
   return (
     <div>
             
@@ -76,71 +99,81 @@ function AllAlumniDisplay() {
           </Toolbar>
         </AppBar>
           <DialogContent>
-          <TextField
-                      fullWidth
-                      label="Full Name"
-                      id="fullWidth"
-                      placeholder=""
-                      style={{ marginBottom: "1rem" }}
-                      value={mail.name}
-                      onChange={handleChange("name")}
-                    />
-            <TextField
-                      fullWidth
-                      label="Email"
-                      id="fullWidth"
-                      placeholder="Enter your email"
-                      style={{ marginBottom: "1rem" }}
-                      value={mail.email}
-                      onChange={handleChange("email")}
-                    />
+          <div className='email-form container'>
+				<h2>Get in touch</h2>
+				<Form
+					onSubmit={async event => {
+						event.preventDefault();
+						setSuccess('');
+						setEmail('');
 
-                <TextField
-                      fullWidth
-                      label="Message"
-                      id="fullWidth"
-                      placeholder="Enter your queries (don't ask questions which are confidential)"
-                      style={{ marginBottom: "1rem" }}
-                      value={mail.message}
-                      multiline
-                      rows={6}
-                      onChange={handleChange("message")}
-                    />
-                    <Box sx={{justifyContent: "center"}}>
-                        <Button
-                        variant="contained"
-                        style={{  }}
-                        // onClick={handleFeedbackSubmit}
-                        disabled={loading ? true : false}
-                    >
-                        SEND
-                    </Button>
-                    </Box>
-                    
+						try {
+							await emailjs.send('service_dhf2prr', 'template_in3nfs6', {
+								from_name: name,
+								from_email: email,
+								reply_to: 'placementsjce2022@gmail.com',
+								message: message,
+							});
+							setSuccess("We've received your email!");
+							setEmail('');
+							setName('');
+							setMessage('');
+						} catch (ex) {
+							setError('An error occurred, please try again!'+ex);
+						}
+					}}>
+					<Form.Group controlId='name'>
+						<Form.Label>Name</Form.Label>
+						<Form.Control
+							value={name}
+							onChange={e => setName(e.currentTarget.value)}
+							type='text'
+							placeholder='Enter name'
+							required
+						/>
+					</Form.Group>
+					<Form.Group controlId='formBasicEmail'>
+						<Form.Label>Email address</Form.Label>
+						<Form.Control
+							value={email}
+							onChange={e => setEmail(e.currentTarget.value)}
+							type='email'
+							placeholder='Enter email'
+							required
+						/>
+					</Form.Group>
+
+					<Form.Group controlId='message'>
+						<Form.Label>Message</Form.Label>
+						<Form.Control
+							value={message}
+							onChange={e => setMessage(e.currentTarget.value)}
+							as='textarea'
+							rows={3}
+							required
+						/>
+					</Form.Group>
+					{success && <p className='success'>{success}</p>}
+					{error && <p className='error'>{error}</p>}
+
+					<Button variant='success' type='submit' class="submitt">
+						Submit
+					</Button>
+				</Form>
+			</div>
           </DialogContent>
           
-        </Dialog>
-        <div class="x">
-            <div class="container">
-            {!loading?(alumni?.map(function (oncamp, i) {
-                return (
-            <> <div class="card">
-                <div class="box">
-                <div class="content">
-                    <h2>{oncamp.a_name.slice(0,1)}</h2>
-                    <h3>{oncamp.a_name}</h3>
-                    <h3>{oncamp.a_cname}</h3>
-                    <p>{oncamp.branch}</p>
-                    <p>{oncamp.passout} Passout</p>
-                    <button onClick={()=>{handleClickopeneditStudentDetails(oncamp)}}>Contact</button>
-                </div>
-                </div>
-            </div></> );
-            })):(null)}
-            </div>
-
-        </div>
+        </Dialog><div class="x">
         
+            <div class="container">
+            
+            <EachAlumni alumni={currentPosts} loading={loading} />
+            
+            </div>
+            </div>
+            <Pagination postsPerPage={postsPerPage} totalPosts={alumni.length} paginateBack={paginateBack}
+        paginateFront={paginateFront} currentPage={currentPage} />
+           
     </div>
   )
 }
