@@ -1,6 +1,6 @@
 import React ,{useState} from 'react'
 import '../../src/static/css/cards.css';
-
+import {url} from '../../src/mainUrl';
 import Dialog from '@mui/material/Dialog';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
@@ -12,11 +12,12 @@ import { Form, Button } from 'react-bootstrap';
 import {  DialogContent, TextField } from "@mui/material";
 import {Typography} from "@mui/material";
 
-function EachAlumni({alumni,loading}) {
+function EachAlumni({input,alumni,loading}) {
       const [mail, setSendMail] = useState({
         name: "",
         email: "",
-        message: ""
+        message: "",
+        subject:""
       });
       const [openeditStudentDetails, setopeneditStudentDetails] = useState(false);
       const [sendcontact,setContact]=useState('');
@@ -32,10 +33,27 @@ function EachAlumni({alumni,loading}) {
   const handleChange = (prop) => (event) => {
     setSendMail({ ...mail, [prop]: event.target.value });
   };
+  const handleSendContact=()=>{
+    fetch(
+      url +
+        "auth/alumni/send_email_alumni/{email}?a_email="+sendcontact.a_email+"&s_name="+mail.name+"&s_email="+mail.email+"&subject="+mail.subject+"&body="+mail.message,
+      {
+        method: "POST",
+        headers: {
+          accept: "application/json",
+        },
+      }
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        // console.log(data);
+      });
+  }
     if(loading)
     {
         return <h2>Loading...</h2>
     }
+   
     return (
     <div class="container" id="alumni">
     <Dialog
@@ -79,6 +97,15 @@ function EachAlumni({alumni,loading}) {
                       value={mail.email}
                       onChange={handleChange("email")}
                     />
+            <TextField
+                      fullWidth
+                      label="Subject"
+                      id="fullWidth"
+                      placeholder="Enter your email"
+                      style={{ marginBottom: "1rem" }}
+                      value={mail.subject}
+                      onChange={handleChange("subject")}
+                    />
                 <TextField
                       fullWidth
                       label="Message"
@@ -94,7 +121,7 @@ function EachAlumni({alumni,loading}) {
                         <Button
                         variant="contained"
                         style={{  }}
-                        // onClick={handleFeedbackSubmit}
+                        onClick={handleSendContact}
                         disabled={loading ? true : false}
                     >
                         SEND
@@ -110,12 +137,12 @@ function EachAlumni({alumni,loading}) {
     <div class="card">
                 <div class="box">
                 <div class="content">
-                    <h2>{oncamp.a_name.slice(0,1)}</h2>
-                    <h3>{oncamp.a_name}</h3>
-                    <h3>{oncamp.a_cname}</h3>
-                    <p>{oncamp.branch}</p>
-                    <p>{oncamp.passout} Passout</p>
-                    <button onClick={()=>{handleClickopeneditStudentDetails(oncamp)}}>Contact</button>
+                    <h2>{oncamp.item?oncamp.item.a_name.slice(0,1):oncamp.a_name.slice(0,1)}</h2>
+                    <h3>{oncamp.item?oncamp.item.a_name:oncamp.a_name}</h3>
+                    <h3>{oncamp.item?oncamp.item.a_cname:oncamp.a_cname}</h3>
+                    <p>{oncamp.item?oncamp.item.branch:oncamp.branch}</p>
+                    <p>{oncamp.item?oncamp.item.passout:oncamp.passout} Passout</p>
+                    <button onClick={()=>{handleClickopeneditStudentDetails(oncamp.item?oncamp.item:oncamp)}}>Contact</button>
                 </div>
                 </div>
             </div></> );
