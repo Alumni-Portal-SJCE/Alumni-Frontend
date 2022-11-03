@@ -23,8 +23,8 @@ function frontpage() {
     <header class="masthead text-white text-center">
         <div class="container">
         <div class="row">
-            <div class="col-xl-9 mx-auto">
-            <h1 class="mb-5 headAlumni"><img alt="JSS_Logo" src={JSSLogo}/>JSS STU Alumni Portal </h1>
+            <div class="col-xl-9 mx-auto" >
+            <img alt="JSS_Logo" src={JSSLogo}/><h2 class="mb">JSS STU Alumni Portal </h2>
             <h3>Connect with Alumni</h3>
             </div>
             <div class="col-md-12 col-lg-12 col-xl-7 mx-auto">

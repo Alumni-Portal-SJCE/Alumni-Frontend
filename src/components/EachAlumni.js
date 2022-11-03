@@ -8,9 +8,11 @@ import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 
 import Box from '@mui/material/Box';
-import { Form, Button } from 'react-bootstrap';
+import {  Button } from 'react-bootstrap';
 import {  DialogContent, TextField } from "@mui/material";
 import {Typography} from "@mui/material";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function EachAlumni({input,alumni,loading}) {
       const [mail, setSendMail] = useState({
@@ -21,19 +23,22 @@ function EachAlumni({input,alumni,loading}) {
       });
       const [openeditStudentDetails, setopeneditStudentDetails] = useState(false);
       const [sendcontact,setContact]=useState('');
+      const [sendMailLoad, setsendMailLoad] = useState(false);
 
       const handleCloseopeneditStudentDetails = () => {
         setopeneditStudentDetails(false);
+        setSendMail("");
       };
       const handleClickopeneditStudentDetails = (oncamp) => {
           setopeneditStudentDetails(true);  
-          setContact(oncamp);  
+          setContact(oncamp);            
       };
       
   const handleChange = (prop) => (event) => {
     setSendMail({ ...mail, [prop]: event.target.value });
   };
   const handleSendContact=()=>{
+    setsendMailLoad(true);
     fetch(
       url +
         "auth/alumni/send_email_alumni/{email}?a_email="+sendcontact.a_email+"&s_name="+mail.name+"&s_email="+mail.email+"&subject="+mail.subject+"&body="+mail.message,
@@ -46,7 +51,10 @@ function EachAlumni({input,alumni,loading}) {
     )
       .then((response) => response.json())
       .then((data) => {
-        // console.log(data);
+        setsendMailLoad(false);
+        setopeneditStudentDetails(false);
+        toast(data.message);
+        setSendMail("");
       });
   }
     if(loading)
@@ -56,6 +64,18 @@ function EachAlumni({input,alumni,loading}) {
    
     return (
     <div class="container" id="alumni">
+    <ToastContainer
+      position="top-right"
+      autoClose={5000}
+      hideProgressBar={false}
+      newestOnTop={false}
+      closeOnClick
+      rtl={false}
+      pauseOnFocusLoss
+      draggable
+      pauseOnHover
+      theme="dark"
+      />
     <Dialog
           fullScreen
           open={openeditStudentDetails}
