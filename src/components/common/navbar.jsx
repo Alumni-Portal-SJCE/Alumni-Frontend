@@ -15,12 +15,12 @@ const NavBar = () => {
 					className='d-inline-block align-top'
 					alt='SJCE logo'
 				/></a>
-				
-			</Navbar.Brand>
 			<div className='title'>
-				<div className='heading1'>JSS STU </div>
+				<div className='heading1'>JSS Science and Technology University</div>
 				<div className='sub-heading'>Alumni Portal</div>
-			</div>
+			</div>	
+			</Navbar.Brand>
+			
 		</Navbar>
 	);
 };

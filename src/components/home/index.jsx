@@ -5,6 +5,9 @@ import Golden from '../campus/goldenjublee.JPG';
 import Library from '../campus/library.jpeg';
 import Open from '../campus/openair.JPG';
 import '../../scss/_home.css'
+import Typewriter from 'typewriter-effect';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 const Home = () => {
 	return (
 		<div className='home'>
@@ -16,7 +19,19 @@ const Home = () => {
 						alt='First '
 					/>
 
-					<Carousel.Caption></Carousel.Caption>
+					<Carousel.Caption>
+					<h3><Typewriter
+					onInit={(typewriter) => {
+						typewriter.typeString('Welcome to The Official Alumni Network of SJCE')
+						.callFunction(() => {
+							// console.log('String typed out!');
+						})
+						.pauseFor(2500)
+						.start();
+					}}
+					/></h3>
+					
+					</Carousel.Caption>
 				</Carousel.Item>
 				<Carousel.Item>
 					<img
@@ -25,7 +40,16 @@ const Home = () => {
 						alt='Second'
 					/>
 
-					<Carousel.Caption></Carousel.Caption>
+					<Carousel.Caption><h3><Typewriter
+					onInit={(typewriter) => {
+						typewriter.typeString('Welcome to The Official Alumni Network of SJCE')
+						.callFunction(() => {
+							// console.log('String typed out!');
+						})
+						.pauseFor(2500)
+						.start();
+					}}
+					/></h3></Carousel.Caption>
 				</Carousel.Item>
 				<Carousel.Item>
 					<img
@@ -34,7 +58,16 @@ const Home = () => {
 						alt='Third '
 					/>
 
-					<Carousel.Caption></Carousel.Caption>
+					<Carousel.Caption><h3><Typewriter
+					onInit={(typewriter) => {
+						typewriter.typeString('Welcome to The Official Alumni Network of SJCE')
+						.callFunction(() => {
+							// console.log('String typed out!');
+						})
+						.pauseFor(2500)
+						.start();
+					}}
+					/></h3></Carousel.Caption>
 				</Carousel.Item>
 				<Carousel.Item>
 					<img
@@ -43,7 +76,16 @@ const Home = () => {
 						alt='Third'
 					/>
 
-					<Carousel.Caption></Carousel.Caption>
+					<Carousel.Caption><h3><Typewriter
+					onInit={(typewriter) => {
+						typewriter.typeString('Welcome to The Official Alumni Network of SJCE')
+						.callFunction(() => {
+							// console.log('String typed out!');
+						})
+						.pauseFor(2500)
+						.start();
+					}}
+					/></h3></Carousel.Caption>
 				</Carousel.Item>
 			</Carousel>
 		</div>

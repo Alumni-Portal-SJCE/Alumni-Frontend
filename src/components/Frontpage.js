@@ -84,7 +84,7 @@ function frontpage() {
   </Suspense>
   
 
-  <section class="showcase">
+  <section class="showcase extra">
     <div class="container-fluid p-0">
       <div class="row no-gutters">
 
@@ -96,9 +96,8 @@ function frontpage() {
       </div>
       <div class="row no-gutters">
         <div class="col-lg-6 text-white showcase-img svg-grid-2"></div>
-        <div class="col-lg-6 my-auto showcase-text">
-          <h2>
-Networking Opportunities</h2>
+        <div class="col-lg-6 my-auto showcase-text ">
+          <h2>Networking Opportunities</h2>
           <p class="lead mb-0">Alumni associations offer networking opportunities, which can connect recent graduates with established professionals and help people pursue career changes.</p>
         </div>
       </div>
