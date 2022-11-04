@@ -11,7 +11,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const Home = () => {
 	return (
 		<div className='home'>
-			<Carousel>
+			<Carousel interval={9000}>
 				<Carousel.Item>
 					<img
 						className='d-block w-100'
@@ -20,16 +20,17 @@ const Home = () => {
 					/>
 
 					<Carousel.Caption>
-					<h3><Typewriter
+					<h2><Typewriter
 					onInit={(typewriter) => {
-						typewriter.typeString('Welcome to The Official Alumni Network of SJCE')
+						typewriter.typeString('<span class="years" >In Commemoration of 60th Anniversary of SJCE</span>')
 						.callFunction(() => {
 							// console.log('String typed out!');
 						})
 						.pauseFor(2500)
 						.start();
 					}}
-					/></h3>
+					/></h2>
+					<span class="yearss">Diamond Jubilee Year Celebration 1963-2022</span>
 					
 					</Carousel.Caption>
 				</Carousel.Item>
@@ -42,7 +43,7 @@ const Home = () => {
 
 					<Carousel.Caption><h3><Typewriter
 					onInit={(typewriter) => {
-						typewriter.typeString('Welcome to The Official Alumni Network of SJCE')
+						typewriter.typeString('<span class="years" >Welcome to The Official Alumni Network of SJCE</span>')
 						.callFunction(() => {
 							// console.log('String typed out!');
 						})
@@ -60,7 +61,7 @@ const Home = () => {
 
 					<Carousel.Caption><h3><Typewriter
 					onInit={(typewriter) => {
-						typewriter.typeString('Welcome to The Official Alumni Network of SJCE')
+						typewriter.typeString('<span class="years" >Welcome to The Official Alumni Network of SJCE</span>')
 						.callFunction(() => {
 							// console.log('String typed out!');
 						})
@@ -78,7 +79,7 @@ const Home = () => {
 
 					<Carousel.Caption><h3><Typewriter
 					onInit={(typewriter) => {
-						typewriter.typeString('Welcome to The Official Alumni Network of SJCE')
+						typewriter.typeString('<span class="years" >Welcome to The Official Alumni Network of SJCE</span>')
 						.callFunction(() => {
 							// console.log('String typed out!');
 						})
