@@ -129,7 +129,7 @@
 }
 .home .whySJCE .f-row .f-col .image-wrapper img {
 	height: 70px;
-	width: 70px;
+	/* width: 70px; */
 	background-image: linear-gradient(
 		rgba(0, 0, 0, 0.7), 
 		rgba(0, 0, 0, 0.7)

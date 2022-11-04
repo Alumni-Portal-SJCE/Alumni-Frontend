@@ -1,6 +1,6 @@
 import React from 'react';
 import { Navbar } from 'react-bootstrap';
-import JSSLogo from '../../static/img/jss.png'
+import JSSLogo from '../../static/img/jsslog.png'
 import '../../scss/common/_navbar.css'
 const NavBar = () => {
 
