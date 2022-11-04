@@ -4,6 +4,8 @@ import '../static/vendor/bootstrap/css/bootstrap.min.css'
 import '../static/vendor/simple-line-icons/css/simple-line-icons.css'
 import '../static/vendor/fontawesome-free/css/all.min.css'
 import JSSLogo from '../static/img/jss.png'
+import Navbar from '../components/common/navbar'
+import Home from './home'
 // import AllAlumniDisplay from './AllAlumniDisplay'
 const AllAlumniDisplay=lazy(()=>import('./AllAlumniDisplay'))
 function frontpage() {
@@ -15,12 +17,11 @@ function frontpage() {
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
 
-    <title>StudNet</title>
-
+    <Navbar/>
     
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css"/>
-
-    <header class="masthead text-white text-center">
+    <Home/>
+    {/* <header class="masthead text-white text-center">
         <div class="container">
         <div class="row">
             
@@ -28,7 +29,7 @@ function frontpage() {
             <h3>Connect with Alumni</h3>
             </div>
             <div class="col-md-12 col-lg-12 col-xl-7 mx-auto">
-            {/* <form action="" method="POST">
+        <form action="" method="POST">
                 <div class="form-row">
                 <div class="col-sm-6 col-md-4">
                     <a href="./register" class="btn btn-primary sign-up"> Signup<i class="fas fa-user-plus ml-3"></i></a>
@@ -37,11 +38,11 @@ function frontpage() {
                     <a href="./login" class="btn btn-primary log-in">Login<i class="fas fa-sign-in-alt ml-3"></i></a>
                 </div>
                 </div>
-            </form> */}
+            </form> 
             </div>
         </div>
     </div>
-  </header>
+  </header> */}
   {/* <section class="features-icons bg-light text-center ">
     <div class="container">
       <div class="row">
