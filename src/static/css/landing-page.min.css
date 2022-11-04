@@ -8,13 +8,36 @@ h1,h2,h3,h4,h5,h6
     font-family:Lato,'Helvetica Neue',Helvetica,Arial,sans-serif;
     font-weight:700
 }
+.mb{
+     color: #D61C4E; 
+    font-weight: 800;
+    text-shadow: -0.5px 0.5px 0 #000,
+                          0.5px 0.5px 0 #000,
+                          0.5px -0.5px 0 #000,
+                        -0.5px -0.5px 0 #000;
+}
+.welcome{
+    color: white !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
+.ma{
+    color: white !important;
+    align-items: center;
+    justify-content: center;
+}
 header.masthead
 {
     position:relative;
     background-color:#343a40;
-    background:url(../img/bg-masthead.jpg) no-repeat center center;
+    background:linear-gradient(
+        rgba(0, 0, 0, 0.7), 
+        rgba(0, 0, 0, 0.3)
+      ),url(../img/admin.jpg) no-repeat center center;
     background-size:cover;padding-top:8rem;
+    
     padding-bottom:8rem
 }
 header.masthead .overlay
@@ -109,7 +132,7 @@ header.masthead h1
 {
     position:relative;
     background-color:#343a40;
-    background:url(../img/bg-masthead.jpg) no-repeat center center;
+    background:url(../img/admin.jpg) no-repeat center center;
     background-size:cover;
     padding-top:7rem;
     padding-bottom:7rem

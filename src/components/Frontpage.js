@@ -23,8 +23,8 @@ function frontpage() {
     <header class="masthead text-white text-center">
         <div class="container">
         <div class="row">
-            <div class="col-xl-9 mx-auto" >
-            <img alt="JSS_Logo" src={JSSLogo}/><h2 class="mb">JSS STU Alumni Portal </h2>
+            
+            <div class="col-xl-12 mx-auto" ><div class="welcome"><img alt="JSS_Logo" src={JSSLogo}/><h1 class="ma">Welcome to</h1></div><h2 class="mb">JSS STU Alumni Portal </h2>
             <h3>Connect with Alumni</h3>
             </div>
             <div class="col-md-12 col-lg-12 col-xl-7 mx-auto">
@@ -96,8 +96,9 @@ function frontpage() {
       <div class="row no-gutters">
         <div class="col-lg-6 text-white showcase-img svg-grid-2"></div>
         <div class="col-lg-6 my-auto showcase-text">
-          <h2>Improve Soft skills</h2>
-          <p class="lead mb-0">Get to know about upcoming debates, MUNs, cultural fests, etc and participate develop your personality and be a better communicator</p>
+          <h2>
+Networking Opportunities</h2>
+          <p class="lead mb-0">Alumni associations offer networking opportunities, which can connect recent graduates with established professionals and help people pursue career changes.</p>
         </div>
       </div>
       

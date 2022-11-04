@@ -162,7 +162,7 @@ function EachAlumni({input,alumni,loading}) {
                     <h3>{oncamp.item?oncamp.item.a_cname:oncamp.a_cname}</h3>
                     <p>{oncamp.item?oncamp.item.branch:oncamp.branch}</p>
                     <p>{oncamp.item?oncamp.item.passout:oncamp.passout} Passout</p>
-                    <button onClick={()=>{handleClickopeneditStudentDetails(oncamp.item?oncamp.item:oncamp)}}>Contact</button>
+                    <button onClick={()=>{handleClickopeneditStudentDetails(oncamp.item?oncamp.item:oncamp)}}>Connect</button>
                 </div>
                 </div>
             </div></> );
