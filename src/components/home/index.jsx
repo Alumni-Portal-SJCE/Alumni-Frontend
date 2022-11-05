@@ -38,55 +38,67 @@ const Home = () => {
 					<img
 						className='d-block w-100'
 						src={Golden}
-						alt='Second'
+						alt='First '
 					/>
 
-					<Carousel.Caption><h3><Typewriter
+					<Carousel.Caption>
+					<h2><Typewriter
 					onInit={(typewriter) => {
-						typewriter.typeString('<span class="years" >Welcome to The Official Alumni Network of SJCE</span>')
+						typewriter.typeString('<span class="years" >In Commemoration of 60th Anniversary of SJCE</span>')
 						.callFunction(() => {
 							// console.log('String typed out!');
 						})
 						.pauseFor(2500)
 						.start();
 					}}
-					/></h3></Carousel.Caption>
+					/></h2>
+					<span class="yearss">Diamond Jubilee Year Celebration 1963-2022</span>
+					
+					</Carousel.Caption>
 				</Carousel.Item>
 				<Carousel.Item>
 					<img
 						className='d-block w-100'
 						src={Library}
-						alt='Third '
+						alt='First '
 					/>
 
-					<Carousel.Caption><h3><Typewriter
+					<Carousel.Caption>
+					<h2><Typewriter
 					onInit={(typewriter) => {
-						typewriter.typeString('<span class="years" >Welcome to The Official Alumni Network of SJCE</span>')
+						typewriter.typeString('<span class="years" >In Commemoration of 60th Anniversary of SJCE</span>')
 						.callFunction(() => {
 							// console.log('String typed out!');
 						})
 						.pauseFor(2500)
 						.start();
 					}}
-					/></h3></Carousel.Caption>
+					/></h2>
+					<span class="yearss">Diamond Jubilee Year Celebration 1963-2022</span>
+					
+					</Carousel.Caption>
 				</Carousel.Item>
 				<Carousel.Item>
 					<img
 						className='d-block w-100'
 						src={Open}
-						alt='Third'
+						alt='First '
 					/>
 
-					<Carousel.Caption><h3><Typewriter
+					<Carousel.Caption>
+					<h2><Typewriter
 					onInit={(typewriter) => {
-						typewriter.typeString('<span class="years" >Welcome to The Official Alumni Network of SJCE</span>')
+						typewriter.typeString('<span class="years" >In Commemoration of 60th Anniversary of SJCE</span>')
 						.callFunction(() => {
 							// console.log('String typed out!');
 						})
 						.pauseFor(2500)
 						.start();
 					}}
-					/></h3></Carousel.Caption>
+					/></h2>
+					<span class="yearss">Diamond Jubilee Year Celebration 1963-2022</span>
+					
+					</Carousel.Caption>
 				</Carousel.Item>
 			</Carousel>
 		</div>
